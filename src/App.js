@@ -10,30 +10,20 @@ const tasks = [
     completed: false
   },
   {
-    task: 'Bake Cookies',
+    task: 'Prepare Salsa Verde',
     id: 1528817084358,
     completed: false
   },
-  // {
-  //   name: 'Milk',
-  //   id: 1235,
-  //   purchased: false
-  // },
-  // {
-  //   name: 'Pizza Sauce',
-  //   id: 1246,
-  //   purchased: false
-  // },
-  // {
-  //   name: 'Raw Honey',
-  //   id: 1237,
-  //   purchased: false
-  // },
-  // {
-  //   name: 'Granola',
-  //   id: 1248,
-  //   purchased: false
-  // }
+  {
+    task: 'Wash Dishes',
+    id: 1528817084371,
+    completed: false
+  },
+  {
+    task: 'Fold Laundry',
+    id: 1528817084444,
+    completed: false
+  }
 ];
 class App extends React.Component {
   // you will need a place to store your state in this component.
@@ -76,7 +66,11 @@ class App extends React.Component {
     });
   }
 
-  
+  clearCompleted = e => {
+    this.setState({
+      tasks: this.state.tasks.filter( task => (!task.completed))
+    });
+  }
 
   render() {
     return (
