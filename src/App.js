@@ -2,10 +2,50 @@ import React from 'react';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
 
+
+const tasks = [
+  {
+    task: 'Organize Garage',
+    id: 1528817077286,
+    completed: false
+  },
+  {
+    task: 'Bake Cookies',
+    id: 1528817084358,
+    completed: false
+  },
+  // {
+  //   name: 'Milk',
+  //   id: 1235,
+  //   purchased: false
+  // },
+  // {
+  //   name: 'Pizza Sauce',
+  //   id: 1246,
+  //   purchased: false
+  // },
+  // {
+  //   name: 'Raw Honey',
+  //   id: 1237,
+  //   purchased: false
+  // },
+  // {
+  //   name: 'Granola',
+  //   id: 1248,
+  //   purchased: false
+  // }
+];
 class App extends React.Component {
   // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
   // this component is going to take care of state, and any change handlers you need to work with your state
+  constructor() {
+    super();
+    this.state = {
+      tasks: tasks
+    }
+  }
+
 
   // Add item function uses state to handle form submissions that add new items to the To Do List
   addTask = (taskName) => {
