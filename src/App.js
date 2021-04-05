@@ -64,7 +64,7 @@ class App extends React.Component {
       if (task.id === id) {
         return( {
           ...task,
-          purchased: !task.purchased
+          completed: !task.completed
         });
       } else {
         return task;
