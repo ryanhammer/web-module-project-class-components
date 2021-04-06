@@ -32,21 +32,33 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      tasks: tasks
+      tasks: tasks,
+      input: '',
     }
   }
 
-
-  // Add item function uses state to handle form submissions that add new items to the To Do List
-  addTask = (taskName) => {
-    // Set state spreads out the original list of items and then allows for new form submissions to add to the list
+  handleChanges = e => {
+    // update state with each keystroke of form input field
     this.setState({
-      tasks: [...this.state.tasks, {
-        task: taskName,   // Task name comes from form input
-        id: Date.now(),   // Generate random ID
-        completed: false  // Default status for a To Do item is not completed
-      }]
+      input: e.target.value
     });
+  };
+
+  // class property to handle form submissions
+  handleSubmit = e => {
+    e.preventDefault();
+    // Add item function uses state to handle form submissions that add new items to the To Do List
+    const addTask = (taskName) => {
+      // Set state spreads out the original list of items and then allows for new form submissions to add to the list
+      this.setState({
+        tasks: [...this.state.tasks, {
+          task: taskName,   // Task name comes from form input
+          id: Date.now(),   // Generate random ID
+          completed: false  // Default status for a To Do item is not completed
+        }]
+      });
+    }
+    addTask(this.state.input);
   }
 
   toggleTask = (id) => {
@@ -77,7 +89,7 @@ class App extends React.Component {
       <div className='App'>
         <header className='header'>
           <h1>Welcome to your Todo List App!</h1>
-          <TodoForm addTask={ this.addTask }/>
+          <TodoForm handleChanges={ this.handleChanges } handleSubmit={this.handleSubmit } addTask={ this.addTask }/>
         </header>
         <TodoList clearCompleted={ this.clearCompleted } toggleTask={ this.toggleTask } tasks={this.state.tasks} />
       </div>
